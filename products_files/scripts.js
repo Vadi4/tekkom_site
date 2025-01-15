@@ -1013,3 +1013,76 @@ function setEqualHeights(selector) {
 
 // Вызываем функцию, передавая селектор
 setEqualHeights('.b-quality-description-item__title');
+
+// scripts for application popup
+
+
+// test func
+function callbackApplication() {
+	return true;
+}
+// end test func
+
+function initApplicationSteps(){
+	const $appPopup = document.querySelector('[data-application-popup]');
+	if( !$appPopup ) return;
+
+	let $currentStep = $appPopup.querySelector('.application-popup__content-step.js-act');
+	let currentStepsCount = +$currentStep.getAttribute('data-app-content-step');
+	let $currentCounter = $appPopup.querySelector('.application-popup__step.js-act');
+
+	const $stepBtnPrev = $appPopup.querySelector('[data-app-step-prev]');
+	const $stepBtnNext = $appPopup.querySelector('[data-app-step-next]');
+
+
+	if( currentStepsCount == 1 ) $stepBtnPrev.classList.add('js-hide');
+
+	$stepBtnNext.addEventListener('click', e => {
+		e.preventDefault();
+		changeStep(currentStepsCount + 1);
+	});
+
+	$stepBtnPrev.addEventListener('click', e => {
+		e.preventDefault();
+		changeStep(currentStepsCount - 1);
+	});
+
+
+	function changeStep(currentStep) {
+
+		var $nextStep = $appPopup.querySelector(`[data-app-content-step="${currentStepsCount}"]`);
+
+		const callbackFunc = $nextStep.getAttribute('data-step-approve-func');
+
+		if( typeof window[callbackFunc] == "function" ) {
+			if( !window[callbackFunc]() ) return;
+		}
+
+		currentStepsCount = currentStep;
+
+		$currentStep.classList.remove('js-act');
+		$currentStep = $appPopup.querySelector(`[data-app-content-step="${currentStepsCount}"]`);
+		$currentStep.classList.add('js-act');
+
+		$currentCounter.classList.remove('js-act');
+		$currentCounter = $appPopup.querySelector(`[data-app-step="${currentStepsCount}"]`);
+		$currentCounter.classList.add('js-act');
+
+		$stepBtnPrev.classList.remove('js-hide')
+
+		if( currentStepsCount == 1 ) {
+			$stepBtnPrev.classList.add('js-hide');
+		} else {
+			$stepBtnPrev.classList.remove('js-hide');
+		}
+	}
+
+
+}
+
+window.addEventListener('load', function(event) {
+	initApplicationSteps();
+});
+
+
+// end scripts for application popup
