@@ -1016,6 +1016,32 @@ setEqualHeights('.b-quality-description-item__title');
 
 // scripts for application popup
 
+document.addEventListener('click', e => {
+
+	const $target = e.target.closest('[data-application-link]');
+
+	if( $target ) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		const $popup = document.querySelector('[data-application-popup]');
+		const $layout = document.querySelector('[data-application-layout]');
+
+		$popup.classList.add('js-act');
+		$layout.classList.add('js-act');
+	}
+
+	if( e.target.closest('[data-application-layout]') ) {
+		const $popup = document.querySelector('[data-application-popup]');
+		const $layout = document.querySelector('[data-application-layout]');
+
+		$popup.classList.remove('js-act');
+		$layout.classList.remove('js-act');
+	}
+
+
+});
+
 
 // test func
 function callbackApplication() {
@@ -1033,9 +1059,10 @@ function initApplicationSteps(){
 
 	const $stepBtnPrev = $appPopup.querySelector('[data-app-step-prev]');
 	const $stepBtnNext = $appPopup.querySelector('[data-app-step-next]');
+	const $btnAppSubmit = $appPopup.querySelector('[data-app-step-submit]');
 
 
-	if( currentStepsCount == 1 ) $stepBtnPrev.classList.add('js-hide');
+	checkStep();
 
 	$stepBtnNext.addEventListener('click', e => {
 		e.preventDefault();
@@ -1070,10 +1097,23 @@ function initApplicationSteps(){
 
 		$stepBtnPrev.classList.remove('js-hide')
 
+		checkStep();
+
+	}
+
+	function checkStep() {
 		if( currentStepsCount == 1 ) {
 			$stepBtnPrev.classList.add('js-hide');
 		} else {
 			$stepBtnPrev.classList.remove('js-hide');
+		}
+
+		if( currentStepsCount == 4 ) {
+			$stepBtnNext.style.display = 'none';
+			$btnAppSubmit.style.display = '';
+		} else {
+			$stepBtnNext.style.display = '';
+			$btnAppSubmit.style.display = 'none';
 		}
 	}
 

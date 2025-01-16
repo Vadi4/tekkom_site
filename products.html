@@ -2240,7 +2240,7 @@
 								</div>
 							</div>
 							<div class="line-block__item ">
-								<div class="header-search banner-light-icon-fill fill-theme-hover color-theme-hover menu-light-icon-fill light-opacity-hover position-rel" title="Поиск">
+								<div class="banner-light-icon-fill fill-theme-hover color-theme-hover menu-light-icon-fill light-opacity-hover position-rel cursor-pointer" title="Поиск">
 									<a data-application-link="true" class="svg inline  svg-inline-" aria-hidden="true">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M3.08057 17.4593C3.08057 19.0187 3.93938 19.87 5.55908 19.87H18.4338C20.0686 19.87 20.9199 19.0262 20.9199 17.4141V6.00084C20.9199 4.38867 20.0686 3.54492 18.4338 3.54492H9.00942C7.37465 3.54492 6.5309 4.38867 6.5309 6.00084V9.35324H4.87354C3.75105 9.35324 3.08057 9.98605 3.08057 11.0633V17.4593ZM7.81159 18.3633C7.95473 18.0921 8.03006 17.7681 8.03006 17.399V6.13644C8.03006 5.41323 8.40674 5.05162 9.10735 5.05162H18.3359C19.044 5.05162 19.4132 5.41323 19.4132 6.13644V17.2785C19.4132 18.0017 19.044 18.3633 18.3359 18.3633H7.81159ZM9.94357 8.25335H17.5147C17.801 8.25335 18.0195 8.02734 18.0195 7.74107C18.0195 7.46233 17.801 7.24386 17.5147 7.24386H9.94357C9.64223 7.24386 9.42376 7.46233 9.42376 7.74107C9.42376 8.02734 9.64976 8.25335 9.94357 8.25335ZM9.94357 10.8524H17.5147C17.801 10.8524 18.0195 10.6339 18.0195 10.3552C18.0195 10.0689 17.801 9.84291 17.5147 9.84291H9.94357C9.64976 9.84291 9.42376 10.0689 9.42376 10.3552C9.42376 10.6339 9.64223 10.8524 9.94357 10.8524ZM4.57973 17.3764V11.327C4.57973 11.0332 4.76807 10.8524 5.06941 10.8524H6.5309V17.3764C6.5309 17.9565 6.10903 18.3633 5.55908 18.3633C5.00914 18.3633 4.57973 17.9414 4.57973 17.3764ZM10.3654 16.0806H12.2337C12.8214 16.0806 13.183 15.7266 13.183 15.139V13.3912C13.183 12.8111 12.8214 12.4495 12.2337 12.4495H10.3654C9.77783 12.4495 9.41623 12.8111 9.41623 13.3912V15.139C9.41623 15.7266 9.77783 16.0806 10.3654 16.0806ZM14.5164 13.459H17.5147C17.801 13.459 18.0195 13.2405 18.0195 12.9618C18.0195 12.6755 17.801 12.4495 17.5147 12.4495H14.5164C14.2151 12.4495 14.0041 12.6755 14.0041 12.9618C14.0041 13.2405 14.2226 13.459 14.5164 13.459ZM14.5164 16.0806H17.5147C17.801 16.0806 18.0195 15.8622 18.0195 15.5834C18.0195 15.2972 17.801 15.0711 17.5147 15.0711H14.5164C14.2226 15.0711 14.0041 15.2972 14.0041 15.5834C14.0041 15.8622 14.2151 16.0806 14.5164 16.0806Z" fill="#D51C22"/>
@@ -8313,6 +8313,22 @@
 <!--	APPLICATION POPUP -->
 	<div class="application-popup__layout" data-application-layout="true"></div>
 	<div class="application-popup" data-application-popup="true">
+		<div class="application-popup__content">
+			<span class="application-popup__title-2">Заявка отправлена</span>
+			<div class="application-popup__content-text">
+				<p>Ваша заявка на 32 товарные позиции принята. <br/>Ожидайте, наш специалист ответит вам в ближайшее время.</p>
+			</div>
+		</div>
+	</div>
+	<div class="application-popup" data-application-popup="true">
+		<div class="application-popup__content">
+			<span class="application-popup__title-2">Ваша заявка пуста</span>
+			<div class="application-popup__content-text">
+				<p>К сожалению, в вашей заявке нет товаров. Добавьте товары.<br/><a href="#">Перейти в каталог товаров.</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="application-popup" data-application-popup="true">
 		<div class="application-popup__top">
 			<div class="application-popup__step js-act" data-app-step="1">
 				<span class="application-popup__step-count">1</span>
@@ -8529,7 +8545,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="application-popup__content-step js-act" data-app-content-step="3" data-step-approve-func="callbackApplication">
+			<div class="application-popup__content-step" data-app-content-step="3" data-step-approve-func="callbackApplication">
 				<span class="application-popup__title-2">Заполните данные для отправки заявки</span>
 				<form class="_form" id="application_form">
 					<div class="form-body">
@@ -8630,7 +8646,29 @@
 					</div>
 				</form>
 			</div>
-			<div class="application-popup__content-step" data-app-content-step="4">
+			<div class="application-popup__content-step js-act" data-app-content-step="4">
+				<div class="application__row">
+					<span class="application-popup__title-2">Выбранные товары</span>
+					<span class="application-popup__caption">32 товара</span>
+				</div>
+				<div class="application__row">
+					<span class="application-popup__title-2">Выбранный дилер</span>
+					<div class="diller-radio">
+						<img src="https://placehold.co/60x60" class="diller-radio__logo">
+						<span class="diller-radio__title">ТРАКДРАЙВ Грузовые запчасти</span>
+					</div>
+				</div>
+				<div class="application__row">
+					<span class="application-popup__title-2">Контактные данные</span>
+					<div class="contacts-data">
+						<span class="contacts-data__title">Иванов Иван Иванович</span>
+						<div class="contacts-data__info">
+							<p>Волгоградская область</p>
+							<p>+ 375 29 234 - 28 - 00</p>
+							<p>ivanovivan@gmail.com</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="application-popup__bottom">
@@ -8641,6 +8679,9 @@
 			<a class="application-popup__trigger" data-app-step-next="true">
 				<span class="application-popup__trigger-title">Далее</span>
 				<img src="./images/step-next.svg">
+			</a>
+			<a class="btn btn-default btn-lg im-popup-link has-ripple" data-app-step-submit="true" style="display: none;">
+				Оставить заяку
 			</a>
 		</div>
 	</div>

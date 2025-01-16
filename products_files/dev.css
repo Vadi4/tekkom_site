@@ -2356,6 +2356,9 @@ body.disabled {
 .position-rel {
     position: relative;
 }
+.cursor-pointer {
+    cursor: pointer;
+}
 
 .icon-counter {
     position: absolute;
@@ -2389,6 +2392,9 @@ body.disabled {
     background-color: #fff;
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, .2) 0 4px 25px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: .25s all ease-in;
 }
 .application-popup__layout {
     z-index: 997;
@@ -2398,6 +2404,14 @@ body.disabled {
     width: 100%;
     height: 100%;
     background-color: rgba(45, 45, 45, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: .25s all ease-in;
+}
+.application-popup.js-act,
+.application-popup__layout.js-act {
+    opacity: 1;
+    visibility: visible;
 }
 .application-popup__top {
     display: grid;
@@ -2529,6 +2543,7 @@ body.disabled {
 }
 .application-popup__title-2 {
     display: block;
+    font-family: Montserrat;
     font-size: 21px;
     line-height: 30px;
     font-weight: 700;
@@ -2598,6 +2613,78 @@ body.disabled {
 }
 .contacts__filter-select .dropdown-select__title .svg {
     top: 24px;
+}
+.application__row {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom: 24px;
+}
+.application__row:last-child {
+    margin-bottom: 0;
+}
+.application__row .application-popup__title-2 {
+    margin-bottom: 12px;
+}
+.contacts-data__title {
+    display: block;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333333;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+.contacts-data__info {
+    font-size: 12px;
+    line-height: 15px;
+    color: #999999;
+}
+.contacts-data__info p:not(:last-child) {
+    margin-bottom: 4px;
+}
+.contacts-data__info p:last-child {
+    margin: 0;
+}
+.application-popup__caption {
+    font-size: 16px;
+    line-height: 24px;
+    color: #333333;
+    font-weight: 600;
+    display: block;
+}
+.application-popup__scroll-wrap::-webkit-scrollbar {
+    width: 4px; /* Ширина скроллбара */
+}
+
+.application-popup__scroll-wrap::-webkit-scrollbar-thumb {
+    background-color: #999999; /* Цвет ползунка скроллбара */
+    border-radius: 4px; /* Закругление углов ползунка */
+}
+
+.application-popup__scroll-wrap::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Цвет ползунка при наведении */
+}
+
+.application-popup__scroll-wrap::-webkit-scrollbar-track {
+    background: transparent; /* Цвет трека скроллбара */
+}
+.application-popup__content {
+    text-align: center;
+}
+.application-popup__content .application-popup__title-2 {
+    margin-bottom: 12px;
+}
+.application-popup__content-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333333;
+    font-weight: 600;
+}
+.application-popup__content-text a {
+    font-size: 14px;
+    font-weight: 400;
+}
+.application-popup__content-text p:last-child {
+    margin: 0;
 }
 @media (max-width: 992px) {
     .application-popup {
